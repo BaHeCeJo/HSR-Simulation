@@ -1,0 +1,2059 @@
+{
+  "command": "optimize",
+  "game": "hsr",
+  "payload": {
+    "character_pool": [
+      {
+        "character_id": "e1e8adcb-ba8f-4c38-adec-cc5c9bfe09e1",
+        "name": "Aglaea",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 698,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 485,
+            "name": "DEF"
+          },
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1241,
+            "name": "PV"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 102,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {},
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Lightning",
+        "path": "Remembrance"
+      },
+      {
+        "character_id": "1bc6eea5-f6cf-4a1d-8b9b-0fa5a6e0ced7",
+        "name": "Archer",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1164,
+            "name": "PV"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 105,
+            "name": "SPD"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 620,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 485,
+            "name": "DEF"
+          }
+        },
+        "advanced_stats": {},
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Quantum",
+        "path": "The Hunt"
+      },
+      {
+        "character_id": "7b5bfa6c-3c51-470f-8395-9edd443b944a",
+        "name": "Arlan",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1199,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 599,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 330,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 102,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Lightning",
+        "path": "Destruction"
+      },
+      {
+        "character_id": "f05ff369-a006-4e82-b6b9-11a3b6c4914e",
+        "name": "Asta",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1023,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 511,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 463,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 106,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Fire",
+        "path": "Harmony"
+      },
+      {
+        "character_id": "4c642437-04f0-47f0-b695-8d188f10997d",
+        "name": "Aventurine",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1203,
+            "name": "PV"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 654,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 106,
+            "name": "SPD"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 446,
+            "name": "ATK"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Imaginary",
+        "path": "Preservation"
+      },
+      {
+        "character_id": "f471f955-e8d0-45b1-ba7e-7a53045396f8",
+        "name": "Bailu",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1319,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 562,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 485,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 98,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Lightning",
+        "path": "Abundance"
+      },
+      {
+        "character_id": "4074add6-d131-4c8a-adc5-6e907f7ff606",
+        "name": "Black Swan",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1086,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 659,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 485,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 102,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Wind",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "98e49a2e-2592-41b3-8ab4-1b832c831580",
+        "name": "Blade",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1358,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 543,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 485,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 97,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Wind",
+        "path": "Destruction"
+      },
+      {
+        "character_id": "f06222e4-d23d-4ac2-86ff-3a6cc389b812",
+        "name": "Acheron",
+        "level": 80,
+        "eidolon": 0,
+        "basic_stats": {
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 698,
+            "name": "ATK"
+          },
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 1125,
+            "name": "PV"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 101,
+            "name": "SPD"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 436,
+            "name": "DEF"
+          }
+        },
+        "advanced_stats": {
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0.5,
+            "name": "Crit DMG"
+          },
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0.05,
+            "name": "Crit Rate"
+          },
+          "dfd96631-4272-46cc-9ad0-a33ab330481e": {
+            "value": 0,
+            "name": "Debuf RES"
+          },
+          "4cbb0b06-c950-4c66-a54b-aeb80e53a99a": {
+            "value": 0,
+            "name": "Energy"
+          }
+        },
+        "abilities": [
+          {
+            "name": "Shared Dream Cries in Red",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "Atop Rainleaf Hangs Oneness",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "Quadrivalent Ascendance",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "Octobolt Flash",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "Trilateral Wiltcross",
+            "level": 7,
+            "scalings": [
+              {
+                "level": 5,
+                "value": 90,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              },
+              {
+                "level": 6,
+                "value": 100,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              },
+              {
+                "level": 7,
+                "value": 110,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              }
+            ]
+          }
+        ],
+        "attribute": "Lightning",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "8b03e1fd-da0b-43b4-a68b-1e6fb2fdb6f2",
+        "name": "Fugue",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Fire",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "9bec87ae-9023-41a5-8c2c-1398efd551fa",
+        "name": "Guinaifen",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Fire",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "4059a9c0-6075-450c-a557-71ee5bc932d3",
+        "name": "Jiaoqiu",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Fire",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "59475edb-41b4-4b3d-bc94-dfa8111e61a1",
+        "name": "Hysilens",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Physical",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "8f29c02f-fdcd-4893-85ec-6d4299e49770",
+        "name": "Kafka",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Lightning",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "d40fc2f7-04f7-4cac-92a6-bd3f120290f6",
+        "name": "Luka",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Physical",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "a8a4d435-bcd4-4105-83ab-72650f296844",
+        "name": "Pela",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Ice",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "2bc50d50-b942-4ddf-a6b4-ea573bad2aae",
+        "name": "Sampo",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Wind",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "2f2432f3-4736-4210-870a-c48d0c6bc3ee",
+        "name": "Silver Wolf",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 142,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 87,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 62,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 107,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "System Warning",
+            "level": 7,
+            "scalings": [
+              {
+                "level": 5,
+                "value": 90,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              },
+              {
+                "level": 6,
+                "value": 100,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              },
+              {
+                "level": 7,
+                "value": 110,
+                "value_type": "percent",
+                "scaling_stat_id": "c987f652-6a0b-487f-9e4b-af2c9b51c6aa",
+                "attribute_index": 0
+              }
+            ]
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Quantum",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "90951efb-e459-492d-9c1e-af81a17cc3ed",
+        "name": "Welt",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Imaginary",
+        "path": "Nihility"
+      },
+      {
+        "character_id": "107afffe-3fab-416e-9234-5d7b1fa55b87",
+        "name": "Dan Heng • Permansor Terrae",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 142,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 79,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 105,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 97,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Physical",
+        "path": "Preservation"
+      },
+      {
+        "character_id": "746b4efb-8185-4777-a84b-659db75e21c5",
+        "name": "Fu Xuan",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Quantum",
+        "path": "Preservation"
+      },
+      {
+        "character_id": "7074cdb5-969b-4808-8143-6bae31772716",
+        "name": "Gepard",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Ice",
+        "path": "Preservation"
+      },
+      {
+        "character_id": "81d79fa7-eb01-48e3-9aa4-95bb75ae03bc",
+        "name": "March 7th",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {},
+        "advanced_stats": {},
+        "abilities": [],
+        "attribute": "Ice",
+        "path": "Preservation"
+      },
+      {
+        "character_id": "11048c4b-0525-4861-be67-229757a07303",
+        "name": "Boothill",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 163,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 84,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 59,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 107,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Physical",
+        "path": "The Hunt"
+      },
+      {
+        "character_id": "fdd2574b-418d-44ec-8ee5-90bfb8a259e1",
+        "name": "Bronya",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 168,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 79,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 72,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 99,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Wind",
+        "path": "Harmony"
+      },
+      {
+        "character_id": "aa5d5fbc-0c17-466e-ac4f-8432092d1841",
+        "name": "Castorice",
+        "level": 1,
+        "eidolon": 0,
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": {
+            "value": 221,
+            "name": "PV"
+          },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": {
+            "value": 71,
+            "name": "ATK"
+          },
+          "73868117-3df2-470d-945a-e389f9f04200": {
+            "value": 66,
+            "name": "DEF"
+          },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": {
+            "value": 95,
+            "name": "SPD"
+          }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": {
+            "value": 0,
+            "name": "Crit Rate"
+          },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": {
+            "value": 0,
+            "name": "Crit DMG"
+          },
+          "268dd0de-bada-4dd1-ae1a-e1019290dab7": {
+            "value": 0,
+            "name": "Break Effect"
+          },
+          "82d5019f-6405-4814-ae28-dd7f56c1dee8": {
+            "value": 0,
+            "name": "Outgoing Healing Boost"
+          },
+          "5dcab875-0b56-4696-966e-49c1e485226b": {
+            "value": 0,
+            "name": "Energy Regeneration Rate"
+          },
+          "764bb8fd-ad42-4bd9-8332-631187154d77": {
+            "value": 0,
+            "name": "Effect Hit Rate"
+          },
+          "4e94ee4d-7f5f-43cf-ba39-e2c0f35675cc": {
+            "value": 0,
+            "name": "Effect RES"
+          },
+          "5169b8ca-b8c5-4bfc-9570-7f194789dfd7": {
+            "value": 0,
+            "name": "Elemental Damage Boost"
+          }
+        },
+        "abilities": [
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          },
+          {
+            "name": "",
+            "level": 1,
+            "scalings": []
+          }
+        ],
+        "attribute": "Quantum",
+        "path": "Remembrance"
+      }
+    ],
+    "lightcone_pool": [
+      {
+        "lightcone_id": "df8260b3-e438-4f9e-b942-2e746bb256f4",
+        "name": "A Dream Scented in Wheat",
+        "level": 1,
+        "superimposition": 4,
+        "basic_stats": {
+          "2cd56050-3fb9-4bb5-a226-17aad0d34e53": {
+            "value": 43,
+            "name": "HP"
+          },
+          "8e5af9db-3079-49ef-90c3-747b4ea00025": {
+            "value": 24,
+            "name": "ATK"
+          },
+          "52566b38-915c-4220-ab0e-61438225704b": {
+            "value": 18,
+            "name": "DEF"
+          }
+        },
+        "advanced_stats": {},
+        "ability": null,
+        "path": "Erudition"
+      }
+    ],
+    "waves": [
+      {
+        "enemies": [
+          {
+            "id": "50cf7b6b-c373-4ee8-ace8-13bf101e0f0f",
+            "instance_id": "enemy_1",
+            "name": "Antibaryon",
+            "level": 80,
+            "basic_stats": {
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0.2,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0.2,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0,
+              "Fire": 0.2,
+              "Ice": 0.2,
+              "Lightning": 0.2,
+              "Wind": 0.2,
+              "Quantum": 0,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Physical",
+              "Quantum"
+            ],
+            "tier": "Normal"
+          },
+          {
+            "id": "50cf7b6b-c373-4ee8-ace8-13bf101e0f0f",
+            "instance_id": "enemy_2",
+            "name": "Antibaryon",
+            "level": 80,
+            "basic_stats": {
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0.2,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0.2,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0,
+              "Fire": 0.2,
+              "Ice": 0.2,
+              "Lightning": 0.2,
+              "Wind": 0.2,
+              "Quantum": 0,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Physical",
+              "Quantum"
+            ],
+            "tier": "Normal"
+          },
+          {
+            "id": "50cf7b6b-c373-4ee8-ace8-13bf101e0f0f",
+            "instance_id": "enemy_3",
+            "name": "Antibaryon",
+            "level": 80,
+            "basic_stats": {
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0.2,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0.2,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0,
+              "Fire": 0.2,
+              "Ice": 0.2,
+              "Lightning": 0.2,
+              "Wind": 0.2,
+              "Quantum": 0,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Physical",
+              "Quantum"
+            ],
+            "tier": "Normal"
+          },
+          null,
+          null
+        ]
+      },
+      {
+        "enemies": [
+          {
+            "id": "962d69dc-fbff-47b4-bfa0-cd4b0358d80b",
+            "instance_id": "enemy_4",
+            "name": "Baryon",
+            "level": 80,
+            "basic_stats": {
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0.2,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0.2,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0.2,
+              "Fire": 0.2,
+              "Ice": 0,
+              "Lightning": 0.2,
+              "Wind": 0,
+              "Quantum": 0.2,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Ice",
+              "Wind"
+            ],
+            "tier": "Normal"
+          },
+          {
+            "id": "962d69dc-fbff-47b4-bfa0-cd4b0358d80b",
+            "instance_id": "enemy_5",
+            "name": "Baryon",
+            "level": 80,
+            "basic_stats": {
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0.2,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0.2,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0.2,
+              "Fire": 0.2,
+              "Ice": 0,
+              "Lightning": 0.2,
+              "Wind": 0,
+              "Quantum": 0.2,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Ice",
+              "Wind"
+            ],
+            "tier": "Normal"
+          },
+          {
+            "id": "962d69dc-fbff-47b4-bfa0-cd4b0358d80b",
+            "instance_id": "enemy_6",
+            "name": "Baryon",
+            "level": 80,
+            "basic_stats": {
+              "b0bfd27b-0a5f-4329-a280-dc1c998446cb": {
+                "value": 99.6,
+                "name": "SPD"
+              },
+              "3acbd4a1-95d3-49b0-a60a-33e4afbedabd": {
+                "value": 0.24,
+                "name": "Effect Hit Rate"
+              },
+              "5c19ad45-af96-4f7d-9f3d-9886a91ed4bb": {
+                "value": 0.1,
+                "name": "Effect Resistance"
+              },
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": {
+                "value": 8259,
+                "name": "HP"
+              },
+              "7b58e059-a7ec-4535-a685-8961e5bc518d": {
+                "value": 1000,
+                "name": "DEF"
+              },
+              "7761c316-9c6b-4610-aa72-afcb80aeb1e9": {
+                "value": 552,
+                "name": "ATK"
+              }
+            },
+            "advanced_stats": {
+              "3d35e39e-52e9-41ce-8723-35497e43ff03": {
+                "value": 0,
+                "name": "Control Effects Resistance"
+              },
+              "9f549ee8-82b7-4163-a76c-7a41dc778ac5": {
+                "value": 0,
+                "name": "Burn Resistance"
+              },
+              "9ecf258c-8f10-4941-a01e-2719bf5ac2f8": {
+                "value": 0,
+                "name": "Bleed Resistance"
+              },
+              "fe4654fa-d39e-4b36-adbd-e003515685b8": {
+                "value": 0,
+                "name": "Shock Resistance"
+              },
+              "17f87469-ffaf-4544-a019-9c76099d02cd": {
+                "value": 0,
+                "name": "Frozen Resistance"
+              },
+              "cc934b70-7aca-46dc-beb2-0aafc221e2ec": {
+                "value": 0,
+                "name": "Ice Resistance"
+              },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": {
+                "value": 10,
+                "name": "Toughness"
+              },
+              "4c775af5-281e-4bbb-8ca2-b2e3f20f3c18": {
+                "value": 0,
+                "name": "Wind Resistance"
+              },
+              "1aa2e98c-979e-47fa-9af3-c0b314715562": {
+                "value": 0,
+                "name": "Wind Sheer Resistance"
+              },
+              "441500bc-47dc-452f-9f1f-f0aaa142ce62": {
+                "value": 0.2,
+                "name": "Physical Resistance"
+              },
+              "176151ff-8d54-4b1b-98fb-03ef410d7371": {
+                "value": 0.2,
+                "name": "Imaginary Resistance"
+              },
+              "3de09fc5-7cb1-412f-aac0-0ebb0ba905e8": {
+                "value": 0.2,
+                "name": "Lightning Resistance"
+              },
+              "2c50d8d8-3d62-4e5d-8221-68f28d8cdddb": {
+                "value": 0.2,
+                "name": "Fire Resistance"
+              },
+              "7154f1fb-f39f-401f-9cee-c14f3a7ceca8": {
+                "value": 0,
+                "name": "Imprisonment Resistance"
+              },
+              "95593691-d658-4f18-b7f4-41c5102734af": {
+                "value": 0,
+                "name": "Entanglement Resistance"
+              },
+              "9deee2d8-f7bf-41b7-829e-2485837784df": {
+                "value": 0.2,
+                "name": "Quantum Resistance"
+              }
+            },
+            "resistances": {
+              "Physical": 0.2,
+              "Fire": 0.2,
+              "Ice": 0,
+              "Lightning": 0.2,
+              "Wind": 0,
+              "Quantum": 0.2,
+              "Imaginary": 0.2
+            },
+            "weaknesses": [
+              "Ice",
+              "Wind"
+            ],
+            "tier": "Normal"
+          },
+          null,
+          null
+        ]
+      }
+    ],
+    "settings": {
+      "max_cycles": 10,
+      "has_castorice": true
+    }
+  }
+}
