@@ -1,0 +1,111 @@
+{
+  "command": "optimize",
+  "game": "hsr",
+  "payload": {
+    "character_pool": [
+      {
+        "character_id": "f06222e4-d23d-4ac2-86ff-3a6cc389b812",
+        "name": "Acheron",
+        "level": 80,
+        "eidolon": 0,
+        "attribute": "Lightning",
+        "path": "Nihility",
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": { "value": 1115.0, "name": "HP" },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": { "value": 679.0,  "name": "ATK" },
+          "73868117-3df2-470d-945a-e389f9f04200": { "value": 436.0,  "name": "DEF" },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": { "value": 101.0,  "name": "SPD" }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": { "value": 0.05,  "name": "CRIT Rate" },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": { "value": 0.5,   "name": "CRIT DMG" }
+        }
+      },
+      {
+        "character_id": "f06222e4-d23d-4ac2-86ff-3a6cc389b813",
+        "name": "Jiaoqiu",
+        "level": 80,
+        "eidolon": 0,
+        "attribute": "Fire",
+        "path": "Nihility",
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": { "value": 1280.0, "name": "HP" },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": { "value": 660.0,  "name": "ATK" },
+          "73868117-3df2-470d-945a-e389f9f04200": { "value": 436.0,  "name": "DEF" },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": { "value": 98.0,   "name": "SPD" }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": { "value": 0.05,  "name": "CRIT Rate" },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": { "value": 0.5,   "name": "CRIT DMG" }
+        }
+      },
+      {
+        "character_id": "a8a4d435-bcd4-4105-83ab-72650f296844",
+        "name": "Pela",
+        "level": 80,
+        "eidolon": 6,
+        "attribute": "Ice",
+        "path": "Nihility",
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": { "value": 1007.0, "name": "HP" },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": { "value": 565.0,  "name": "ATK" },
+          "73868117-3df2-470d-945a-e389f9f04200": { "value": 436.0,  "name": "DEF" },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": { "value": 105.0,  "name": "SPD" }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": { "value": 0.05,  "name": "CRIT Rate" },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": { "value": 0.5,   "name": "CRIT DMG" }
+        }
+      },
+      {
+        "character_id": "c2d3e4f5-a6b7-4890-c1d2-e3f4a5b6c7d8",
+        "name": "Aventurine",
+        "level": 80,
+        "eidolon": 0,
+        "attribute": "Imaginary",
+        "path": "Preservation",
+        "basic_stats": {
+          "7383172e-f828-4298-a8cf-887d50ff4a28": { "value": 1254.0, "name": "HP" },
+          "c987f652-6a0b-487f-9e4b-af2c9b51c6aa": { "value": 562.0,  "name": "ATK" },
+          "73868117-3df2-470d-945a-e389f9f04200": { "value": 1100.0, "name": "DEF" },
+          "3e4b082d-7943-440d-ae2c-8d31b0a370be": { "value": 92.0,   "name": "SPD" }
+        },
+        "advanced_stats": {
+          "a62e3a38-743a-41f8-8523-aec4ef998c84": { "value": 0.15,  "name": "CRIT Rate" },
+          "a93e523a-7852-4580-b2ef-03467e214bcd": { "value": 0.5,   "name": "CRIT DMG" }
+        }
+      }
+    ],
+    "lightcone_pool": [],
+    "waves": [
+      {
+        "enemies": [
+          {
+            "id": "enemy_boss",
+            "instance_id": "boss_1",
+            "name": "Eternal Blaze",
+            "level": 95,
+            "basic_stats": {
+              "dab1d58a-5e35-470a-a2d4-1bdddf3019a0": { "value": 2000000.0, "name": "HP" },
+              "f2a3b4c5-d6e7-f8a9-b0c1-d2e3f4a5b6c7": { "value": 2000.0,   "name": "DEF" },
+              "50ff424d-9428-46e2-8f3e-8968dacbb6bd": { "value": 150.0,     "name": "Toughness" }
+            },
+            "weaknesses": ["Lightning", "Fire"],
+            "resistances": {
+              "Physical":  0.2,
+              "Fire":      0.0,
+              "Ice":       0.2,
+              "Lightning": 0.0,
+              "Wind":      0.2,
+              "Quantum":   0.2,
+              "Imaginary": 0.2
+            }
+          }
+        ]
+      }
+    ],
+    "settings": {
+      "max_cycles": 3
+    }
+  }
+}
