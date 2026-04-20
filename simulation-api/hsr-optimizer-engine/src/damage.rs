@@ -110,27 +110,17 @@ pub fn calculate_damage_detailed(
     let base_dmg   = (action.multiplier + action.extra_multiplier / 100.0) * total_stat + action.extra_dmg;
     let dmg_boost  = 1.0 + (attacker.buffs.dmg_boost + action_type_dmg_boost(attacker, action)) / 100.0;
     let weaken_m   = 1.0 - attacker.buffs.weaken / 100.0;
-    let enemy_def_reduce: f64 = target.active_debuffs.values()
-        .filter_map(|e| {
-            let s = e.stat.as_deref().unwrap_or("").to_ascii_lowercase();
-            if s == "def reduction" || s == "def shred" { Some(e.value) } else { None }
-        }).sum();
     let def_m = def_mult(
         attacker.level, target.level,
         attacker.buffs.def_ignore / 100.0,
-        (attacker.buffs.def_reduction + enemy_def_reduce) / 100.0,
+        (attacker.buffs.def_reduction + target.cached_def_reduce) / 100.0,
     );
     let base_res = target.elemental_res.get(&attacker.element).copied().unwrap_or(target.resistance);
-    let all_res_reduce: f64 = target.active_debuffs.values()
-        .filter_map(|e| if e.stat.as_deref() == Some("All RES") { Some(e.value / 100.0) } else { None }).sum();
-    let weak_res_reduce: f64 = if target.weaknesses.contains(&attacker.element) {
-        target.active_debuffs.values()
-            .filter_map(|e| if e.stat.as_deref() == Some("Weakness RES") { Some(e.value / 100.0) } else { None }).sum()
+    let weak_res_reduce = if target.weaknesses.contains(&attacker.element) {
+        target.cached_weakness_res_reduce
     } else { 0.0 };
-    let res_m  = res_mult(base_res - all_res_reduce - weak_res_reduce, attacker.buffs.res_pen / 100.0);
-    let buff_vuln: f64 = target.active_buffs.values()
-        .filter_map(|e| if e.stat.as_deref() == Some("Vulnerability") { Some(e.value) } else { None }).sum();
-    let vuln_m  = 1.0 + (target.vulnerability + buff_vuln) / 100.0;
+    let res_m  = res_mult(base_res - target.cached_all_res_reduce - weak_res_reduce, attacker.buffs.res_pen / 100.0);
+    let vuln_m = 1.0 + (target.vulnerability + target.cached_vuln_bonus) / 100.0;
     let mitig_m = 1.0 - target.dmg_reduction / 100.0;
     let broken_m = if target.is_broken { 1.0 } else { 0.9 };
     let cr       = (attacker.buffs.crit_rate / 100.0).clamp(0.0, 1.0);
@@ -163,51 +153,31 @@ pub fn calculate_damage(attacker: &TeamMember, target: &SimEnemy, action: &Actio
     // 4. Weaken (attacker's outgoing penalty)
     let weaken_mult = 1.0 - attacker.buffs.weaken / 100.0;
 
-    // 5. DEF — attacker-side ignore + enemy-side DEF reduction debuffs
-    let enemy_def_reduce: f64 = target.active_debuffs.values()
-        .filter_map(|e| {
-            let s = e.stat.as_deref().unwrap_or("").to_ascii_lowercase();
-            if s == "def reduction" || s == "def shred" { Some(e.value) } else { None }
-        })
-        .sum();
+    // 5. DEF — attacker-side ignore + cached enemy DEF reduction sum
     let d_mult = def_mult(
         attacker.level,
         target.level,
         attacker.buffs.def_ignore / 100.0,
-        (attacker.buffs.def_reduction + enemy_def_reduce) / 100.0,
+        (attacker.buffs.def_reduction + target.cached_def_reduce) / 100.0,
     );
 
-    // 6. RES — element-specific base, minus enemy All-RES / Weakness-RES debuffs
+    // 6. RES — element-specific base, minus cached All-RES and (conditional) Weakness-RES
     let base_res = target.elemental_res
         .get(&attacker.element)
         .copied()
         .unwrap_or(target.resistance);
-    let all_res_reduce: f64 = target.active_debuffs.values()
-        .filter_map(|e| {
-            if e.stat.as_deref() == Some("All RES") { Some(e.value / 100.0) } else { None }
-        })
-        .sum();
-    let weak_res_reduce: f64 = if target.weaknesses.contains(&attacker.element) {
-        target.active_debuffs.values()
-            .filter_map(|e| {
-                if e.stat.as_deref() == Some("Weakness RES") { Some(e.value / 100.0) } else { None }
-            })
-            .sum()
+    let weak_res_reduce = if target.weaknesses.contains(&attacker.element) {
+        target.cached_weakness_res_reduce
     } else {
         0.0
     };
     let r_mult = res_mult(
-        base_res - all_res_reduce - weak_res_reduce,
+        base_res - target.cached_all_res_reduce - weak_res_reduce,
         attacker.buffs.res_pen / 100.0,
     );
 
-    // 7. Vulnerability — direct field + active_buffs tagged "Vulnerability"
-    let buff_vuln: f64 = target.active_buffs.values()
-        .filter_map(|e| {
-            if e.stat.as_deref() == Some("Vulnerability") { Some(e.value) } else { None }
-        })
-        .sum();
-    let vuln_mult = 1.0 + (target.vulnerability + buff_vuln) / 100.0;
+    // 7. Vulnerability — direct field + cached buff sum
+    let vuln_mult = 1.0 + (target.vulnerability + target.cached_vuln_bonus) / 100.0;
 
     // 8. Mitigation
     let mitig_mult = 1.0 - target.dmg_reduction / 100.0;

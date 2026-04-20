@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState};
 
@@ -10,10 +10,10 @@ fn add_sd(state: &mut SimState, idx: usize, amount: f64) {
     let current = get_sd(state, idx);
     let overflow = ((current + amount) - 9.0).max(0.0);
     let new_sd = (current + amount).min(9.0);
-    state.team[idx].stacks.insert("sd".to_string(), new_sd);
+    state.team[idx].stacks.insert("sd", new_sd);
     if overflow > 0.0 {
         let qa = state.team[idx].stacks.get("qa").copied().unwrap_or(0.0);
-        state.team[idx].stacks.insert("qa".to_string(), (qa + overflow).min(3.0));
+        state.team[idx].stacks.insert("qa", (qa + overflow).min(3.0));
     }
 }
 
@@ -108,12 +108,12 @@ pub fn on_after_action(
 ) {}
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     // Simulator does NOT reset Acheron's energy; reset SD stacks here
     let sd = get_sd(state, idx);
     let qa = state.team[idx].stacks.get("qa").copied().unwrap_or(0.0);
-    state.team[idx].stacks.insert("sd".to_string(), 0.0);
-    state.team[idx].stacks.insert("qa".to_string(), 0.0);
+    state.team[idx].stacks.insert("sd", 0.0);
+    state.team[idx].stacks.insert("qa", 0.0);
 
     // Talent: -20% All-Type RES during ult
     for slot in state.enemies.iter_mut() {
@@ -134,7 +134,7 @@ pub fn on_ult(state: &mut SimState, idx: usize) {
                 .max_by(|a, b| {
                     get_ck(state, &a.instance_id)
                         .partial_cmp(&get_ck(state, &b.instance_id))
-                        .unwrap()
+                        .unwrap_or(std::cmp::Ordering::Equal)
                 })
                 .map(|e| e.instance_id.clone())
         };
@@ -285,7 +285,7 @@ pub fn on_global_debuff(state: &mut SimState, idx: usize, _source_idx: usize, en
     let action_id = state.current_action_id;
     let last = state.team[idx].stacks.get("acheron_last_debuff_action").copied().unwrap_or(0.0);
     if last as u64 == action_id { return; }
-    state.team[idx].stacks.insert("acheron_last_debuff_action".to_string(), action_id as f64);
+    state.team[idx].stacks.insert("acheron_last_debuff_action", action_id as f64);
 
     add_sd(state, idx, 1.0);
 

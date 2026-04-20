@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -59,7 +59,7 @@ fn sw_implant_weakness(state: &mut SimState, idx: usize, enemy_slot: usize) {
     }
 
     let new_idx = SW_ELEMENTS.iter().position(|&e| e == elem.as_str()).unwrap_or(99) as f64;
-    state.stacks.insert(wk_key, new_idx);
+    state.stacks.insert(wk_key.to_string(), new_idx);
 
     if let Some(e) = state.enemies[enemy_slot].as_mut() {
         if !e.weaknesses.contains(&elem) {
@@ -167,7 +167,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     let eidolon = state.team[idx].eidolon;

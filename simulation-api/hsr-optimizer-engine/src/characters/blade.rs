@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState};
 
@@ -47,7 +47,7 @@ fn check_e4(state: &mut SimState, idx: usize) {
     let stacks = state.team[idx].stacks.get(E4_KEY).copied().unwrap_or(0.0) as u32;
     if stacks >= 2 { return; }
     if state.team[idx].hp / state.team[idx].max_hp <= 0.50 {
-        state.team[idx].stacks.insert(E4_KEY.to_string(), (stacks + 1) as f64);
+        state.team[idx].stacks.insert(E4_KEY, (stacks + 1) as f64);
         // Permanently scale base HP and max_hp by +20%
         let old = state.team[idx].base_stats.get(ids::CHAR_HP_ID).copied().unwrap_or(0.0);
         state.team[idx].base_stats.insert(ids::CHAR_HP_ID.to_string(), old * 1.20);
@@ -223,14 +223,14 @@ pub fn on_before_action(
         action.toughness_damage = 20.0;
         action.extra_dmg        = 0.0;
 
-        state.team[idx].stacks.insert(ENH_FLAG.to_string(), 1.0);
+        state.team[idx].stacks.insert(ENH_FLAG, 1.0);
         consume_hp(state, idx, 0.10);
     } else if action.action_type == ActionType::Skill {
         // ── Enter Hellscape: Skill deals 0 damage, gives 0 energy ──
         action.multiplier       = 0.0;
         action.toughness_damage = 0.0;
         state.stacks.insert(HELLSCAPE_KEY.to_string(), 3.0);
-        state.team[idx].stacks.insert(ENTERING_KEY.to_string(), 1.0);
+        state.team[idx].stacks.insert(ENTERING_KEY, 1.0);
         consume_hp(state, idx, 0.30);
         // Pre-apply Hellscape buffs so the inline Enhanced Basic (in on_after_action)
         // uses them while the snapshot is still active.
@@ -342,7 +342,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     let eidolon = state.team[idx].eidolon;

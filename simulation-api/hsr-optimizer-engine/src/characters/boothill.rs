@@ -1,4 +1,4 @@
-//! Boothill  (The Hunt | Physical)
+﻿//! Boothill  (The Hunt | Physical)
 //!
 //! Skill: Enter Standoff with target (2 turns of Enhanced Basic). No direct DMG.
 //! Enhanced Basic (Standoff): 220% ATK, toughness 20 + 10×Trickshot, +30% DMG.
@@ -20,6 +20,7 @@ const TRICKSHOT_KEY:   &str = "boothill_trickshot";    // 0-3 Trickshot stacks
 const ENH_FLAG:        &str = "boothill_enh";           // Enhanced Basic active this turn
 const ENTERING_KEY:    &str = "boothill_entering";      // Skill → inline ENH Basic
 const E2_GUARD:        &str = "boothill_e2g";           // once-per-turn E2 gate
+const BROKE_FLAG:      &str = "boothill_broke";         // enemy was broken this turn
 
 fn ts(state: &SimState, idx: usize) -> f64 {
     state.team[idx].stacks.get(TRICKSHOT_KEY).copied().unwrap_or(0.0)
@@ -32,7 +33,7 @@ fn in_standoff(state: &SimState, idx: usize) -> bool {
 fn gain_trickshot(state: &mut SimState, idx: usize) {
     let cur = ts(state, idx);
     if cur >= 3.0 { return; }
-    state.team[idx].stacks.insert(TRICKSHOT_KEY.to_string(), cur + 1.0);
+    state.team[idx].stacks.insert(TRICKSHOT_KEY, cur + 1.0);
 
     // A6: +10 energy per Trickshot gained
     let max_e = state.team[idx].max_energy;
@@ -42,7 +43,7 @@ fn gain_trickshot(state: &mut SimState, idx: usize) {
     if state.team[idx].eidolon >= 2 {
         let guard = state.team[idx].stacks.get(E2_GUARD).copied().unwrap_or(0.0);
         if guard == 0.0 {
-            state.team[idx].stacks.insert(E2_GUARD.to_string(), 1.0);
+            state.team[idx].stacks.insert(E2_GUARD, 1.0);
             state.skill_points = (state.skill_points + 1).min(5);
             let old = state.team[idx].base_stats.get(ids::CHAR_BE_ID).copied().unwrap_or(0.0);
             state.team[idx].base_stats.insert(ids::CHAR_BE_ID.to_string(), old + 30.0);
@@ -51,7 +52,7 @@ fn gain_trickshot(state: &mut SimState, idx: usize) {
 }
 
 fn dispel_standoff(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert(STANDOFF_KEY.to_string(), 0.0);
+    state.team[idx].stacks.insert(STANDOFF_KEY, 0.0);
     state.team[idx].stacks.remove(STANDOFF_TARGET);
 }
 
@@ -151,7 +152,7 @@ fn execute_inline_enhanced_basic(state: &mut SimState, idx: usize) {
         talent_break_dmg(state, idx, target_slot);
         gain_trickshot(state, idx);
         dispel_standoff(state, idx);
-        state.team[idx].stacks.insert(BROKE_FLAG.to_string(), 1.0);
+        state.team[idx].stacks.insert(BROKE_FLAG, 1.0);
     } else if state.enemies[target_slot].as_ref().map_or(false, |e| e.hp <= 0.0) {
         // Killed without break
         gain_trickshot(state, idx);
@@ -173,17 +174,17 @@ pub fn on_battle_start(state: &mut SimState, idx: usize) {
     state.team[idx].buffs.atk_percent += 18.0;
     state.team[idx].buffs.hp_percent  += 10.0;
     // Init stacks
-    state.team[idx].stacks.insert(STANDOFF_KEY.to_string(), 0.0);
-    state.team[idx].stacks.insert(TRICKSHOT_KEY.to_string(), 0.0);
+    state.team[idx].stacks.insert(STANDOFF_KEY, 0.0);
+    state.team[idx].stacks.insert(TRICKSHOT_KEY, 0.0);
     // E1: start with 1 Trickshot (bypass gain_trickshot to avoid E2 at battle start)
     if state.team[idx].eidolon >= 1 {
-        state.team[idx].stacks.insert(TRICKSHOT_KEY.to_string(), 1.0);
+        state.team[idx].stacks.insert(TRICKSHOT_KEY, 1.0);
     }
 }
 
 pub fn on_turn_start(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert(E2_GUARD.to_string(), 0.0);
-    state.team[idx].stacks.insert(BROKE_FLAG.to_string(), 0.0);
+    state.team[idx].stacks.insert(E2_GUARD, 0.0);
+    state.team[idx].stacks.insert(BROKE_FLAG, 0.0);
 }
 
 pub fn on_before_action(
@@ -198,16 +199,16 @@ pub fn on_before_action(
             action.multiplier       = 0.0;
             action.toughness_damage = 0.0;
             let slot = target_idx.unwrap_or(0) as f64;
-            state.team[idx].stacks.insert(STANDOFF_KEY.to_string(), 2.0);
-            state.team[idx].stacks.insert(STANDOFF_TARGET.to_string(), slot);
-            state.team[idx].stacks.insert(ENTERING_KEY.to_string(), 1.0);
+            state.team[idx].stacks.insert(STANDOFF_KEY, 2.0);
+            state.team[idx].stacks.insert(STANDOFF_TARGET, slot);
+            state.team[idx].stacks.insert(ENTERING_KEY, 1.0);
         }
         ActionType::Basic if in_standoff(state, idx) => {
             let stacks = ts(state, idx);
             action.scaling_stat_id  = ids::CHAR_ATK_ID.to_string();
             action.multiplier       = 2.20;
             action.toughness_damage = 20.0 + stacks * 10.0;
-            state.team[idx].stacks.insert(ENH_FLAG.to_string(), 1.0);
+            state.team[idx].stacks.insert(ENH_FLAG, 1.0);
             // A4: +30% DMG in Standoff
             state.team[idx].buffs.dmg_boost += 30.0;
             // E4: +12% DMG in Standoff
@@ -246,7 +247,7 @@ pub fn on_after_action(
 
     // ── Skill → Standoff entry: execute Enhanced Basic inline ─────────────────
     if entering > 0.0 {
-        state.team[idx].stacks.insert(ENTERING_KEY.to_string(), 0.0);
+        state.team[idx].stacks.insert(ENTERING_KEY, 0.0);
         // Correct energy: Skill gave +30*err, Enhanced Basic gives +20*err
         let err_mult = 1.0 + state.team[idx].buffs.energy_regen_rate / 100.0;
         state.team[idx].energy -= 30.0 * err_mult;
@@ -257,7 +258,7 @@ pub fn on_after_action(
 
     // ── Enhanced Basic (normal Standoff turn) ─────────────────────────────────
     if enh > 0.0 {
-        state.team[idx].stacks.insert(ENH_FLAG.to_string(), 0.0);
+        state.team[idx].stacks.insert(ENH_FLAG, 0.0);
         // Enhanced Basic doesn't grant SP (undo simulator's +1 for Basic ATK)
         state.skill_points = (state.skill_points - 1).max(0);
 
@@ -267,7 +268,7 @@ pub fn on_after_action(
         // Decrement Standoff
         let remaining = state.team[idx].stacks.get(STANDOFF_KEY).copied().unwrap_or(0.0);
         let new_rem   = (remaining - 1.0).max(0.0);
-        state.team[idx].stacks.insert(STANDOFF_KEY.to_string(), new_rem);
+        state.team[idx].stacks.insert(STANDOFF_KEY, new_rem);
         if new_rem <= 0.0 {
             state.team[idx].stacks.remove(STANDOFF_TARGET);
         }
@@ -281,7 +282,7 @@ pub fn on_after_action(
                 }
             }
         }
-        state.team[idx].stacks.insert(BROKE_FLAG.to_string(), 0.0);
+        state.team[idx].stacks.insert(BROKE_FLAG, 0.0);
         return;
     }
 
@@ -296,7 +297,7 @@ pub fn on_after_action(
             }
             // Track Physical Weakness duration (2 enemy turns)
             let dur_key = format!("boothill_phys_dur_{}", t);
-            state.team[idx].stacks.insert(dur_key, 2.0);
+            state.stacks.insert(dur_key, 2.0);
         }
     }
 }
@@ -311,7 +312,7 @@ pub fn on_break(state: &mut SimState, idx: usize, enemy_idx: usize) {
     talent_break_dmg(state, idx, enemy_idx);
     gain_trickshot(state, idx);
     dispel_standoff(state, idx);
-    state.team[idx].stacks.insert(BROKE_FLAG.to_string(), 1.0);
+    state.team[idx].stacks.insert(BROKE_FLAG, 1.0);
 
     // E6: additional element break DMG (~40% more Physical Break equivalent)
     if state.team[idx].eidolon >= 6 {
@@ -335,19 +336,19 @@ pub fn on_global_debuff(
     _enemy_idx: usize,
 ) {}
 
-pub fn on_enemy_turn_start(state: &mut SimState, idx: usize, enemy_idx: usize) {
+pub fn on_enemy_turn_start(state: &mut SimState, _idx: usize, enemy_idx: usize) {
     // Decrement Physical Weakness duration for this enemy slot
     let dur_key = format!("boothill_phys_dur_{}", enemy_idx);
-    let dur = state.team[idx].stacks.get(&dur_key).copied().unwrap_or(0.0);
+    let dur = state.stacks.get(&dur_key).copied().unwrap_or(0.0);
     if dur <= 0.0 { return; }
     let new_dur = dur - 1.0;
     if new_dur <= 0.0 {
-        state.team[idx].stacks.remove(&dur_key);
+        state.stacks.remove(&dur_key);
         if let Some(enemy) = state.enemies[enemy_idx].as_mut() {
             enemy.weaknesses.retain(|w| w != "Physical");
         }
     } else {
-        state.team[idx].stacks.insert(dur_key, new_dur);
+        state.stacks.insert(dur_key, new_dur);
     }
 }
 

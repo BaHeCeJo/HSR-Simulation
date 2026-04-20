@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -13,7 +13,7 @@ fn add_energy(state: &mut SimState, idx: usize, amount: f64) {
     let cur = state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0);
     state.stacks.insert(ENERGY_KEY.to_string(), (cur + amount).min(ENERGY_CAP));
     if state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0) >= ENERGY_CAP {
-        state.team[idx].stacks.insert("_ult_ready".to_string(), 1.0);
+        state.team[idx].stacks.insert("_ult_ready", 1.0);
     }
 }
 
@@ -62,7 +62,7 @@ fn implant_weakness(state: &mut SimState, enemy_slot: usize, n: usize) {
     if next >= 5 {
         let qd_key = format!("anaxa_qd_active_{}", iid);
         if state.stacks.get(&qd_key).copied().unwrap_or(0.0) < 1.0 {
-            state.stacks.insert(qd_key, 1.0);
+            state.stacks.insert(qd_key.to_string(), 1.0);
         }
     }
 }
@@ -235,7 +235,7 @@ pub fn on_after_action(
                     .unwrap_or_default();
                 let trigger_key = format!("anaxa_qd_trigger_{}", state.current_action_id);
                 if has_qd(state, &iid) && state.stacks.get(&trigger_key).copied().unwrap_or(0.0) < 1.0 {
-                    state.stacks.insert(trigger_key, 1.0);
+                    state.stacks.insert(trigger_key.to_string(), 1.0);
                     // Execute 5 QD extra skill hits at 70%
                     execute_skill_bounces(state, idx, 0.70, 5);
                     add_energy(state, idx, 6.0);
@@ -272,7 +272,7 @@ pub fn on_after_action(
                     .unwrap_or_default();
                 let trigger_key = format!("anaxa_qd_trigger_{}", state.current_action_id);
                 if has_qd(state, &iid) && state.stacks.get(&trigger_key).copied().unwrap_or(0.0) < 1.0 {
-                    state.stacks.insert(trigger_key, 1.0);
+                    state.stacks.insert(trigger_key.to_string(), 1.0);
                     execute_skill_bounces(state, idx, 0.70, 5);
                     add_energy(state, idx, 6.0);
                 }
@@ -285,7 +285,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].stacks.remove("_ult_ready");
     state.stacks.insert(ENERGY_KEY.to_string(), 5.0);
     state.team[idx].energy = 0.0;

@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState};
 
@@ -23,7 +23,7 @@ fn add_argenti_energy(state: &mut SimState, idx: usize, amount: f64) {
     let prefer_90 = state.stacks.get("argenti_prefer_90_ult").copied().unwrap_or(0.0) >= 1.0;
     let threshold = if prefer_90 { 90.0 } else { 180.0 };
     if new_val >= threshold {
-        state.team[idx].stacks.insert("_ult_ready".to_string(), 1.0);
+        state.team[idx].stacks.insert("_ult_ready", 1.0);
     }
 }
 
@@ -120,7 +120,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].stacks.remove("_ult_ready");
 
     let actual_energy = state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0);

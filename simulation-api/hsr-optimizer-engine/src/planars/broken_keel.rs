@@ -1,4 +1,4 @@
-//! Broken Keel
+﻿//! Broken Keel
 //!
 //! (2p) Effect RES +8%.
 //! (4p-equivalent team bonus) If any wearer's Effect RES ≥ 30%: all allies CRIT DMG +10%.
@@ -27,7 +27,7 @@ pub fn apply_team(team: &mut Vec<TeamMember>, relic_lists: &[Vec<IncomingRelic>]
         for member in team.iter_mut() {
             if member.stacks.get("broken_keel_cdmg_applied").copied().unwrap_or(0.0) < 1.0 {
                 member.buffs.crit_dmg += 10.0;
-                member.stacks.insert("broken_keel_cdmg_applied".to_string(), 1.0);
+                member.stacks.insert("broken_keel_cdmg_applied", 1.0);
             }
         }
     }

@@ -1,4 +1,4 @@
-//! Relic set bonus dispatch and main-stat application.
+﻿//! Relic set bonus dispatch and main-stat application.
 //!
 //! # Main stat keys (sent in `IncomingRelic.main_stat`)
 //!
@@ -275,7 +275,7 @@ pub fn apply_turn_start_effects(member: &mut TeamMember) {
     // The +12% SPD is stored persistently in buffs.speed_percent; remove when expired.
     if let Some(w) = member.stacks.get("messenger_spd_window").copied() {
         if w > 0.0 {
-            member.stacks.insert("messenger_spd_window".to_string(), w - 1.0);
+            member.stacks.insert("messenger_spd_window", w - 1.0);
             if w - 1.0 <= 0.0 {
                 member.buffs.speed_percent -= 12.0;
                 member.stacks.remove("messenger_spd_window");
@@ -286,7 +286,7 @@ pub fn apply_turn_start_effects(member: &mut TeamMember) {
     // Longevous Disciple 4p: decrement CRIT Rate stack window; clear stacks when expired.
     if let Some(w) = member.stacks.get("longevous_window").copied() {
         if w > 0.0 {
-            member.stacks.insert("longevous_window".to_string(), w - 1.0);
+            member.stacks.insert("longevous_window", w - 1.0);
             if w - 1.0 <= 0.0 {
                 member.stacks.remove("longevous_stacks");
                 member.stacks.remove("longevous_window");
@@ -297,7 +297,7 @@ pub fn apply_turn_start_effects(member: &mut TeamMember) {
     // The Ashblazing Grand Duke 4p: decrement FUA stack window; clear stacks when expired.
     if let Some(w) = member.stacks.get("ashblazing_window").copied() {
         if w > 0.0 {
-            member.stacks.insert("ashblazing_window".to_string(), w - 1.0);
+            member.stacks.insert("ashblazing_window", w - 1.0);
             if w - 1.0 <= 0.0 {
                 member.stacks.remove("ashblazing_stacks");
                 member.stacks.remove("ashblazing_window");
@@ -308,7 +308,7 @@ pub fn apply_turn_start_effects(member: &mut TeamMember) {
     // The Wind-Soaring Valorous 4p: decrement post-FUA Ult DMG window.
     if let Some(w) = member.stacks.get("wind_soaring_fua_window").copied() {
         if w > 0.0 {
-            member.stacks.insert("wind_soaring_fua_window".to_string(), w - 1.0);
+            member.stacks.insert("wind_soaring_fua_window", w - 1.0);
             if w - 1.0 <= 0.0 {
                 member.stacks.remove("wind_soaring_fua_window");
             }
@@ -520,24 +520,24 @@ pub fn on_action_used(team: &mut Vec<TeamMember>, wearer_idx: usize, action_type
 
     // Band of Sizzling Thunder 4p: ATK +20% for 1 turn after Skill.
     if is_skill && count_set(&relics, "band_of_sizzling_thunder") >= 4 {
-        team[wearer_idx].stacks.insert("band_skill_window".to_string(), 1.0);
+        team[wearer_idx].stacks.insert("band_skill_window", 1.0);
     }
 
     // Hunter of Glacial Forest 4p: CRIT DMG +25% for 2 turns after Ult.
     if is_ult && count_set(&relics, "hunter_of_glacial_forest") >= 4 {
-        team[wearer_idx].stacks.insert("hunter_window".to_string(), 2.0);
+        team[wearer_idx].stacks.insert("hunter_window", 2.0);
     }
 
     // Scholar Lost in Erudition 4p: Skill DMG +25% for the next Skill after Ult.
     if is_ult && count_set(&relics, "scholar_lost_in_erudition") >= 4 {
-        team[wearer_idx].stacks.insert("scholar_ult_window".to_string(), 1.0);
+        team[wearer_idx].stacks.insert("scholar_ult_window", 1.0);
     }
 
     // Firesmith of Lava-Forging 4p: Fire DMG +12% for next attack after Ult.
     if is_ult && count_set(&relics, "firesmith_of_lava_forging") >= 4
         && team[wearer_idx].element == "Fire"
     {
-        team[wearer_idx].stacks.insert("firesmith_ult_window".to_string(), 1.0);
+        team[wearer_idx].stacks.insert("firesmith_ult_window", 1.0);
     }
 
     // ── Team-wide effects ─────────────────────────────────────────────────────
@@ -551,9 +551,9 @@ pub fn on_action_used(team: &mut Vec<TeamMember>, wearer_idx: usize, action_type
             // Accumulate up to 36% total CRIT DMG (2 stacks × 18%).
             let current = team[i].stacks.get("sacerdos_cdmg_bonus").copied().unwrap_or(0.0);
             let new_bonus = (current + 18.0).min(36.0);
-            team[i].stacks.insert("sacerdos_cdmg_bonus".to_string(), new_bonus);
+            team[i].stacks.insert("sacerdos_cdmg_bonus", new_bonus);
             // Refresh or start the 2-turn window.
-            team[i].stacks.insert("sacerdos_cdmg_window".to_string(), 2.0);
+            team[i].stacks.insert("sacerdos_cdmg_window", 2.0);
         }
     }
 
@@ -568,14 +568,14 @@ pub fn on_action_used(team: &mut Vec<TeamMember>, wearer_idx: usize, action_type
                     member.buffs.speed_percent += 12.0;
                 }
                 // Window = 2 so turn-start decrement fires once before the next action.
-                member.stacks.insert("messenger_spd_window".to_string(), 2.0);
+                member.stacks.insert("messenger_spd_window", 2.0);
             }
         }
 
         // Watchmaker, Master of Dream Machinations 4p: all allies Break Effect +30% for 2 turns.
         if count_set(&relics, "watchmaker_master_of_dream_machinations") >= 4 {
             for member in team.iter_mut() {
-                member.stacks.insert("watchmaker_be_window".to_string(), 2.0);
+                member.stacks.insert("watchmaker_be_window", 2.0);
             }
         }
     }
@@ -588,7 +588,7 @@ pub fn on_attack_hit(member: &mut TeamMember) {
 
     // Champion of Streetwise Boxing 4p: +1 stack after attacking (max 5).
     if count_set(&relics, "champion_of_streetwise_boxing") >= 4 {
-        let s = member.stacks.entry("champion_stacks".to_string()).or_insert(0.0);
+        let s = member.stacks.entry("champion_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(5.0);
     }
 }
@@ -600,22 +600,22 @@ pub fn on_hit_taken(member: &mut TeamMember) {
 
     // Champion of Streetwise Boxing 4p: +1 stack when attacked (max 5).
     if count_set(&relics, "champion_of_streetwise_boxing") >= 4 {
-        let s = member.stacks.entry("champion_stacks".to_string()).or_insert(0.0);
+        let s = member.stacks.entry("champion_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(5.0);
     }
 
     // Wavestrider Captain 4p: +1 "Help" stack when targeted by an ability (max 2).
     // Note: also triggered via on_ally_targeted for ally Skill/Ult targeting this member.
     if count_set(&relics, "wavestrider_captain") >= 4 {
-        let s = member.stacks.entry("wavestrider_stacks".to_string()).or_insert(0.0);
+        let s = member.stacks.entry("wavestrider_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(2.0);
     }
 
     // Longevous Disciple 4p: +1 CRIT Rate stack (max 2) when hit; refresh 2-turn window.
     if count_set(&relics, "longevous_disciple") >= 4 {
-        let s = member.stacks.entry("longevous_stacks".to_string()).or_insert(0.0);
+        let s = member.stacks.entry("longevous_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(2.0);
-        member.stacks.insert("longevous_window".to_string(), 2.0);
+        member.stacks.insert("longevous_window", 2.0);
     }
 }
 
@@ -626,7 +626,7 @@ pub fn on_ally_targeted(member: &mut TeamMember) {
 
     // Wavestrider Captain 4p: +1 "Help" stack when targeted by ally ability (max 2).
     if count_set(&relics, "wavestrider_captain") >= 4 {
-        let s = member.stacks.entry("wavestrider_stacks".to_string()).or_insert(0.0);
+        let s = member.stacks.entry("wavestrider_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(2.0);
     }
 }
@@ -639,7 +639,7 @@ pub fn on_enemy_killed(team: &mut [TeamMember]) {
 
         // Sigonia, the Unclaimed Desolation: +1 CRIT DMG stack per kill (max 10).
         if count_set(&relics, "sigonia_the_unclaimed_desolation") >= 2 {
-            let s = member.stacks.entry("sigonia_stacks".to_string()).or_insert(0.0);
+            let s = member.stacks.entry("sigonia_stacks").or_insert(0.0);
             *s = (*s + 1.0).min(10.0);
         }
     }
@@ -654,7 +654,7 @@ pub fn on_follow_up_start(team: &mut Vec<TeamMember>, wearer_idx: usize) {
 
     // The Ashblazing Grand Duke 4p: stacks reset on each new follow-up.
     if count_set(&relics, "the_ashblazing_grand_duke") >= 4 {
-        team[wearer_idx].stacks.insert("ashblazing_stacks".to_string(), 0.0);
+        team[wearer_idx].stacks.insert("ashblazing_stacks", 0.0);
     }
 }
 
@@ -664,9 +664,9 @@ pub fn on_follow_up_hit(team: &mut Vec<TeamMember>, wearer_idx: usize) {
     let relics: Vec<_> = team[wearer_idx].relics.clone();
 
     if count_set(&relics, "the_ashblazing_grand_duke") >= 4 {
-        let s = team[wearer_idx].stacks.entry("ashblazing_stacks".to_string()).or_insert(0.0);
+        let s = team[wearer_idx].stacks.entry("ashblazing_stacks").or_insert(0.0);
         *s = (*s + 1.0).min(8.0);
-        team[wearer_idx].stacks.insert("ashblazing_window".to_string(), 3.0);
+        team[wearer_idx].stacks.insert("ashblazing_window", 3.0);
     }
 }
 
@@ -677,7 +677,7 @@ pub fn on_follow_up_end(team: &mut Vec<TeamMember>, wearer_idx: usize) {
 
     // The Wind-Soaring Valorous 4p: Ult DMG +36% for 1 turn after follow-up.
     if count_set(&relics, "the_wind_soaring_valorous") >= 4 {
-        team[wearer_idx].stacks.insert("wind_soaring_fua_window".to_string(), 1.0);
+        team[wearer_idx].stacks.insert("wind_soaring_fua_window", 1.0);
     }
 }
 

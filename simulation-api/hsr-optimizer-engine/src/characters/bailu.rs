@@ -1,4 +1,4 @@
-use crate::effects;
+﻿use crate::effects;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
 
 const TALENT_TRIGGERS_KEY: &str = "bailu_talent_triggers";
@@ -29,7 +29,7 @@ fn apply_e4(state: &mut SimState, bailu_idx: usize, target_idx: usize) {
     let key = format!("bailu_e4_{}", kit_id);
     let stacks = state.stacks.get(&key).copied().unwrap_or(0.0);
     if stacks >= 3.0 { return; }
-    state.stacks.insert(key, stacks + 1.0);
+    state.stacks.insert(key.to_string(), stacks + 1.0);
     state.team[target_idx].buffs.dmg_boost += 10.0;
 }
 
@@ -102,7 +102,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     let eidolon = state.team[idx].eidolon;

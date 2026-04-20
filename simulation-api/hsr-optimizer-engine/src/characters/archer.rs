@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState};
 
@@ -17,7 +17,7 @@ fn add_energy(state: &mut SimState, idx: usize, amount: f64) {
     let cur = state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0);
     state.stacks.insert(ENERGY_KEY.to_string(), (cur + amount).min(ENERGY_CAP));
     if state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0) >= ENERGY_CAP {
-        state.team[idx].stacks.insert("_ult_ready".to_string(), 1.0);
+        state.team[idx].stacks.insert("_ult_ready", 1.0);
     }
 }
 
@@ -249,7 +249,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].stacks.remove("_ult_ready");
     state.stacks.insert(ENERGY_KEY.to_string(), 5.0);
     state.team[idx].energy = 0.0;

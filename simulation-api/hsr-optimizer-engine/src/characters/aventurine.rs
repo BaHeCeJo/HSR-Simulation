@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -246,7 +246,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     let eidolon = state.team[idx].eidolon;

@@ -282,8 +282,8 @@ pub struct TeamMember {
     pub active_buffs: HashMap<String, StatusEffect>,
     pub active_debuffs: HashMap<String, StatusEffect>,
     pub lightcone: LightconeStats,
-    pub stacks: HashMap<String, f64>,
-    pub turn_counters: HashMap<String, i32>,
+    pub stacks: HashMap<&'static str, f64>,
+    pub turn_counters: HashMap<&'static str, i32>,
     pub aggro_modifier: f64,
     /// Raw ability data from the database (for scaling lookups)
     pub abilities: Vec<IncomingAbility>,
@@ -335,6 +335,11 @@ pub struct SimEnemy {
     pub active_debuffs: HashMap<String, StatusEffect>,
     pub active_buffs: HashMap<String, StatusEffect>,
     pub base_stats: StatMap,
+    /// Cached sums recomputed whenever debuffs/buffs change — read directly in damage.rs
+    pub cached_def_reduce: f64,
+    pub cached_all_res_reduce: f64,
+    pub cached_weakness_res_reduce: f64,
+    pub cached_vuln_bonus: f64,
 }
 
 #[derive(Debug, Clone)]

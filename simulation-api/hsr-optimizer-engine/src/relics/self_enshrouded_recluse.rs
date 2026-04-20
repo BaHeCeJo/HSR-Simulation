@@ -1,4 +1,4 @@
-//! Self-Enshrouded Recluse
+﻿//! Self-Enshrouded Recluse
 //!
 //! (2p) Shield Effect +10%.
 //! (4p) Shield Effect provided by wearer +12%.
@@ -26,7 +26,7 @@ pub fn apply_team(team: &mut Vec<TeamMember>, relic_lists: &[Vec<IncomingRelic>]
         .any(|r| r.iter().filter(|p| p.set_id == SET_ID).count() >= 4);
     if any_4p {
         for member in team.iter_mut() {
-            member.stacks.insert("recluse_crit_available".to_string(), 1.0);
+            member.stacks.insert("recluse_crit_available", 1.0);
         }
     }
 }

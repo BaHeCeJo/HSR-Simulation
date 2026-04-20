@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState};
 
@@ -9,18 +9,18 @@ pub fn on_battle_start(state: &mut SimState, idx: usize) {
     state.team[idx].buffs.effect_res  += 18.0;  // minor trace: Effect RES +18%
 
     // A4: +50% Effect RES against DoT debuffs specifically
-    state.team[idx].stacks.insert("arlan_dot_effect_res".to_string(), 50.0);
+    state.team[idx].stacks.insert("arlan_dot_effect_res", 50.0);
 
     // E4: survive one killing blow
     if state.team[idx].eidolon >= 4 {
-        state.team[idx].stacks.insert("arlan_e4_active".to_string(), 1.0);
-        state.team[idx].stacks.insert("arlan_e4_turns_left".to_string(), 2.0);
+        state.team[idx].stacks.insert("arlan_e4_active", 1.0);
+        state.team[idx].stacks.insert("arlan_e4_turns_left", 2.0);
     }
 
     // A6: if starting HP ≤ 50%, nullify first incoming hit
     let hp_pct = state.team[idx].hp / state.team[idx].max_hp;
     if hp_pct <= 0.5 {
-        state.team[idx].stacks.insert("arlan_a6_active".to_string(), 1.0);
+        state.team[idx].stacks.insert("arlan_a6_active", 1.0);
     }
 }
 
@@ -30,7 +30,7 @@ pub fn on_turn_start(state: &mut SimState, idx: usize) {
         let left = state.team[idx].stacks.get("arlan_e4_turns_left").copied().unwrap_or(0.0);
         if left > 0.0 {
             let new_left = left - 1.0;
-            state.team[idx].stacks.insert("arlan_e4_turns_left".to_string(), new_left);
+            state.team[idx].stacks.insert("arlan_e4_turns_left", new_left);
             if new_left <= 0.0 {
                 state.team[idx].stacks.remove("arlan_e4_active");
             }
@@ -98,7 +98,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     // E2: remove first debuff on ult

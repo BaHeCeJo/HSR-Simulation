@@ -1,4 +1,4 @@
-use std::collections::{BinaryHeap, HashMap};
+﻿use std::collections::{BinaryHeap, HashMap};
 
 use crate::characters;
 use crate::lightcones;
@@ -256,6 +256,10 @@ fn map_wave(wave_data: &crate::models::IncomingWave) -> Wave {
                     active_debuffs: HashMap::new(),
                     active_buffs:   HashMap::new(),
                     base_stats,
+                    cached_def_reduce: 0.0,
+                    cached_all_res_reduce: 0.0,
+                    cached_weakness_res_reduce: 0.0,
+                    cached_vuln_bonus: 0.0,
                 });
             }
         }
@@ -517,7 +521,7 @@ pub fn apply_damage_to_ally(state: &mut SimState, target_idx: usize, raw_damage:
         );
         if has_revive {
             let bi = bailu_idx.unwrap();
-            *state.team[bi].stacks.entry("bailu_ko_revives".to_string()).or_insert(0.0) -= 1.0;
+            *state.team[bi].stacks.entry("bailu_ko_revives").or_insert(0.0) -= 1.0;
             let max_hp = state.team[target_idx].max_hp;
             state.team[target_idx].hp = max_hp * 0.01; // keep alive at ~1%
             return;

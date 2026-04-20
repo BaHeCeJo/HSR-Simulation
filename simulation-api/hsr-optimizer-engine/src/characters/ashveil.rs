@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -57,7 +57,9 @@ fn apply_bait(state: &mut SimState, target_idx: usize, eidolon: i32) {
     // Remove bait from previous target
     for s in state.enemies.iter_mut() {
         if let Some(e) = s.as_mut() {
-            e.active_debuffs.remove("bait");
+            if e.active_debuffs.remove("bait").is_some() {
+                crate::effects::recompute_enemy_caches(e);
+            }
         }
     }
     // Apply to new target
@@ -239,7 +241,7 @@ pub fn on_turn_start(state: &mut SimState, idx: usize) {
                 let current = state.stacks.get(&key).copied().unwrap_or(0.0);
                 let next = if e.max_hp > 0.0 && e.hp / e.max_hp <= 0.5 { 36.0 } else { 24.0 };
                 e.vulnerability += next - current;
-                state.stacks.insert(key, next);
+                state.stacks.insert(key.to_string(), next);
             }
         }
     }
@@ -304,19 +306,16 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     let eidolon = state.team[idx].eidolon;
 
     // Apply Bait to first alive enemy
-    let target = state.enemies.iter().position(|s| s.as_ref().map_or(false, |e| e.hp > 0.0));
-    if let Some(t) = target {
-        apply_bait(state, t, eidolon);
-    } else {
-        return;
-    }
-    let t = target.unwrap();
+    let t = match state.enemies.iter().position(|s| s.as_ref().map_or(false, |e| e.hp > 0.0)) {
+        Some(t) => { apply_bait(state, t, eidolon); t }
+        None => return,
+    };
 
     // E4: +40% ATK for 3 turns
     if eidolon >= 4 {

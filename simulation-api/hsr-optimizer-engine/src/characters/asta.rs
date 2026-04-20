@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -31,7 +31,7 @@ fn decrement_spd_buff(state: &mut SimState, member_idx: usize) {
         *spd -= 50.0;
         state.stacks.remove(&key);
     } else {
-        state.stacks.insert(key, remaining - 1.0);
+        state.stacks.insert(key.to_string(), remaining - 1.0);
     }
 }
 
@@ -199,7 +199,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].energy = 5.0;
 
     // E2: skip next charging reduction
@@ -218,7 +218,7 @@ pub fn on_ult(state: &mut SimState, idx: usize) {
         if let Some(midx) = state.team.iter().position(|m| &m.kit_id == kit_id) {
             *state.team[midx].base_stats.entry(ids::CHAR_SPD_ID.to_string()).or_insert(100.0) += 50.0;
             let key = format!("asta_spd_remaining_{}", kit_id);
-            state.stacks.insert(key, 2.0);
+            state.stacks.insert(key.to_string(), 2.0);
         }
     }
 }

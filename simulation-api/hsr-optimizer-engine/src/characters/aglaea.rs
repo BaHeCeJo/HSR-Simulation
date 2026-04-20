@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, ActorEntry, SimState, StatusEffect};
@@ -27,7 +27,7 @@ fn add_energy(state: &mut SimState, idx: usize, amount: f64) {
     let cur = state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0);
     state.stacks.insert(ENERGY_KEY.to_string(), (cur + amount).min(ENERGY_CAP));
     if state.stacks.get(ENERGY_KEY).copied().unwrap_or(0.0) >= ENERGY_CAP {
-        state.team[idx].stacks.insert("_ult_ready".to_string(), 1.0);
+        state.team[idx].stacks.insert("_ult_ready", 1.0);
     }
 }
 
@@ -69,6 +69,7 @@ fn dismiss_garmentmaker(state: &mut SimState, aglaea_idx: usize) {
         if let Some(e) = slot.as_mut() {
             e.active_buffs.remove("seam_stitch");
             e.active_buffs.remove("seam_stitch_vuln");
+            crate::effects::recompute_enemy_caches(e);
         }
     }
 
@@ -395,7 +396,7 @@ pub fn on_after_action(
 }
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     state.team[idx].stacks.remove("_ult_ready");
     state.stacks.insert(ENERGY_KEY.to_string(), 5.0);
 
@@ -413,7 +414,7 @@ pub fn on_ult(state: &mut SimState, idx: usize) {
 
     // SPD boost: +15% of base SPD on first Stance entry (guard against compounding).
     if state.team[idx].stacks.get("aglaea_spd_boosted").copied().unwrap_or(0.0) < 1.0 {
-        state.team[idx].stacks.insert("aglaea_spd_boosted".to_string(), 1.0);
+        state.team[idx].stacks.insert("aglaea_spd_boosted", 1.0);
         let cur_spd = state.team[idx].base_stats.get(ids::CHAR_SPD_ID).copied().unwrap_or(100.0);
         state.team[idx].base_stats.insert(ids::CHAR_SPD_ID.to_string(), cur_spd * 1.15);
         // Update GM's SPD to reflect Aglaea's new base (re-summon invalidates stale AV entry).

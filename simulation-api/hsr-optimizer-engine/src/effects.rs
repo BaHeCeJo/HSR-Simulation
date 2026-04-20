@@ -18,6 +18,26 @@ pub fn tick_debuffs(member: &mut TeamMember) {
     });
 }
 
+/// Recompute all damage-formula cache fields from current debuff/buff state.
+/// Call after any change to active_debuffs or active_buffs on an enemy.
+pub fn recompute_enemy_caches(enemy: &mut SimEnemy) {
+    enemy.cached_def_reduce = enemy.active_debuffs.values()
+        .filter_map(|e| {
+            let s = e.stat.as_deref().unwrap_or("").to_ascii_lowercase();
+            if s == "def reduction" || s == "def shred" { Some(e.value) } else { None }
+        })
+        .sum();
+    enemy.cached_all_res_reduce = enemy.active_debuffs.values()
+        .filter_map(|e| if e.stat.as_deref() == Some("All RES") { Some(e.value / 100.0) } else { None })
+        .sum();
+    enemy.cached_weakness_res_reduce = enemy.active_debuffs.values()
+        .filter_map(|e| if e.stat.as_deref() == Some("Weakness RES") { Some(e.value / 100.0) } else { None })
+        .sum();
+    enemy.cached_vuln_bonus = enemy.active_buffs.values()
+        .filter_map(|e| if e.stat.as_deref() == Some("Vulnerability") { Some(e.value) } else { None })
+        .sum();
+}
+
 /// Tick all active debuffs on an enemy.
 pub fn tick_enemy_debuffs(enemy: &mut SimEnemy) {
     let before = enemy.active_debuffs.len();
@@ -27,6 +47,9 @@ pub fn tick_enemy_debuffs(enemy: &mut SimEnemy) {
     });
     let removed = before - enemy.active_debuffs.len();
     enemy.debuff_count = enemy.debuff_count.saturating_sub(removed as u32);
+    if removed > 0 {
+        recompute_enemy_caches(enemy);
+    }
 }
 
 /// Apply or overwrite a status effect by key (longer duration wins).
@@ -44,6 +67,7 @@ pub fn apply_status_effect(
 /// Apply a buff to an enemy (e.g. vulnerability stacks).
 pub fn apply_enemy_buff(enemy: &mut SimEnemy, key: &str, effect: StatusEffect) {
     apply_status_effect(&mut enemy.active_buffs, key, effect);
+    recompute_enemy_caches(enemy);
 }
 
 /// Returns true if a debuff with `base_chance` (0.0–1.0) lands on `enemy`
@@ -75,6 +99,7 @@ pub fn apply_enemy_debuff(enemy: &mut SimEnemy, key: &str, effect: StatusEffect)
     if is_new {
         enemy.debuff_count += 1;
     }
+    recompute_enemy_caches(enemy);
 }
 
 /// Apply a buff to a team member.

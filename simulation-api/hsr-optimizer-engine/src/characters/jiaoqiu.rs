@@ -1,4 +1,4 @@
-use crate::damage;
+﻿use crate::damage;
 use crate::effects;
 use crate::ids;
 use crate::models::{ActionParams, ActionType, SimState, StatusEffect};
@@ -34,6 +34,7 @@ fn update_vuln_buff(state: &mut SimState, enemy_idx: usize) {
             });
         } else {
             e.active_buffs.remove("ashen_roast_vuln");
+            crate::effects::recompute_enemy_caches(e);
         }
     }
     let _ = instance_id;
@@ -60,6 +61,7 @@ pub fn on_turn_start(state: &mut SimState, _idx: usize) {
             for slot in state.enemies.iter_mut() {
                 if let Some(e) = slot.as_mut() {
                     e.active_buffs.remove("jiaoqiu_zone_vuln");
+                    crate::effects::recompute_enemy_caches(e);
                 }
             }
         }
@@ -119,7 +121,7 @@ pub fn on_after_action(
 
 pub fn on_ult(state: &mut SimState, idx: usize) {
     // Signal ult handled
-    state.team[idx].stacks.insert("_ult_handled".to_string(), 1.0);
+    state.team[idx].stacks.insert("_ult_handled", 1.0);
     // Energy reset (simulator already set to 0; grant 5 back)
     state.team[idx].energy = 5.0;
 

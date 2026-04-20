@@ -203,6 +203,27 @@ fn run_team_with_relics(
     run_simulation(&chars_cloned, &lcs, waves_data, max_cycles, with_logs)
 }
 
+fn run_team_with_relic_override(
+    char_idxs:     &[usize],
+    char_pool:     &[IncomingCharacter],
+    lc_pool:       &[IncomingLightcone],
+    base_configs:  &[relics::RelicConfig],
+    override_slot: usize,
+    override_cfg:  &relics::RelicConfig,
+    waves_data:    &[IncomingWave],
+    max_cycles:    i32,
+    with_logs:     bool,
+) -> SimReport {
+    let char_refs: Vec<&IncomingCharacter> = char_idxs.iter().map(|&i| &char_pool[i]).collect();
+    let lcs = assign_lcs_greedily(&char_refs, lc_pool);
+    let mut chars_cloned: Vec<IncomingCharacter> = char_refs.iter().map(|&c| c.clone()).collect();
+    for (i, (ch, cfg)) in chars_cloned.iter_mut().zip(base_configs.iter()).enumerate() {
+        let effective = if i == override_slot { override_cfg } else { cfg };
+        ch.relics = Some(relics::config_to_relics(effective));
+    }
+    run_simulation(&chars_cloned, &lcs, waves_data, max_cycles, with_logs)
+}
+
 // ─── Exhaustive search ───────────────────────────────────────────────────────
 
 fn exhaustive_search(
@@ -255,16 +276,20 @@ fn optimize_relics_two_pass(
 
     for _ in 0..rounds {
         for slot in 0..n {
-            let fixed = best.clone();
-
             // ── Pass A: find best (relic set, ornament set) pair ─────────────
             let winner_set = set_combos.par_iter()
                 .map(|sc| {
-                    let mut cfgs = fixed.clone();
-                    cfgs[slot].relic_set    = sc.relic_set.clone();
-                    cfgs[slot].ornament_set = sc.ornament_set.clone();
-                    let rep = run_team_with_relics(
-                        char_idxs, char_pool, lc_pool, &cfgs, waves_data, max_cycles, false,
+                    let override_cfg = relics::RelicConfig {
+                        relic_set:    sc.relic_set.clone(),
+                        ornament_set: sc.ornament_set.clone(),
+                        body_main:    best[slot].body_main.clone(),
+                        feet_main:    best[slot].feet_main.clone(),
+                        sphere_main:  best[slot].sphere_main.clone(),
+                        rope_main:    best[slot].rope_main.clone(),
+                    };
+                    let rep = run_team_with_relic_override(
+                        char_idxs, char_pool, lc_pool, &best, slot, &override_cfg,
+                        waves_data, max_cycles, false,
                     );
                     (sc.clone(), rep)
                 })
@@ -278,16 +303,19 @@ fn optimize_relics_two_pass(
             }
 
             // ── Pass B: find best (body, feet, sphere, rope) main stats ──────
-            let fixed2 = best.clone();
             let winner_mains = main_combos.par_iter()
                 .map(|mc| {
-                    let mut cfgs = fixed2.clone();
-                    cfgs[slot].body_main   = mc.body_main.clone();
-                    cfgs[slot].feet_main   = mc.feet_main.clone();
-                    cfgs[slot].sphere_main = mc.sphere_main.clone();
-                    cfgs[slot].rope_main   = mc.rope_main.clone();
-                    let rep = run_team_with_relics(
-                        char_idxs, char_pool, lc_pool, &cfgs, waves_data, max_cycles, false,
+                    let override_cfg = relics::RelicConfig {
+                        relic_set:    best[slot].relic_set.clone(),
+                        ornament_set: best[slot].ornament_set.clone(),
+                        body_main:    mc.body_main.clone(),
+                        feet_main:    mc.feet_main.clone(),
+                        sphere_main:  mc.sphere_main.clone(),
+                        rope_main:    mc.rope_main.clone(),
+                    };
+                    let rep = run_team_with_relic_override(
+                        char_idxs, char_pool, lc_pool, &best, slot, &override_cfg,
+                        waves_data, max_cycles, false,
                     );
                     (mc.clone(), rep)
                 })
@@ -338,12 +366,13 @@ fn sa_chain_joint(
         .map(|&i| default_relic_config(char_pool[i].attribute.as_deref().unwrap_or("Physical")))
         .collect();
 
-    let mut genome         = JointGenome { char_idxs, relic_configs };
-    let mut current_report = run_genome(&genome, char_pool, lc_pool, waves_data, max_cycles, false);
-    let mut current_score  = score(&current_report, max_cycles);
-    let mut best_genome    = genome.clone();
-    let mut best_report    = current_report.clone();
-    let mut best_score     = current_score;
+    let mut genome        = JointGenome { char_idxs, relic_configs };
+    let mut current_score = score(
+        &run_genome(&genome, char_pool, lc_pool, waves_data, max_cycles, false),
+        max_cycles,
+    );
+    let mut best_genome = genome.clone();
+    let mut best_score  = current_score;
 
     let alpha = (SA_T_END / SA_T_START).powf(1.0 / SA_JOINT_ITERATIONS as f64);
     let mut t = SA_T_START;
@@ -378,27 +407,28 @@ fn sa_chain_joint(
             neighbor.relic_configs[slot].rope_main   = mc.rope_main.clone();
         }
 
-        let neighbor_report = run_genome(&neighbor, char_pool, lc_pool, waves_data, max_cycles, false);
-        let neighbor_score  = score(&neighbor_report, max_cycles);
+        let neighbor_score = score(
+            &run_genome(&neighbor, char_pool, lc_pool, waves_data, max_cycles, false),
+            max_cycles,
+        );
 
         let delta  = neighbor_score - current_score;
         let accept = delta > 0.0 || rng.gen::<f64>() < (delta / t).exp();
 
         if accept {
-            genome         = neighbor;
-            current_report = neighbor_report;
-            current_score  = neighbor_score;
+            genome        = neighbor;
+            current_score = neighbor_score;
 
             if current_score > best_score {
                 best_score  = current_score;
                 best_genome = genome.clone();
-                best_report = current_report.clone();
             }
         }
 
         t *= alpha;
     }
 
+    let best_report = run_genome(&best_genome, char_pool, lc_pool, waves_data, max_cycles, false);
     (best_genome, best_report)
 }
 
