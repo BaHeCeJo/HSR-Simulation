@@ -714,6 +714,9 @@ fn execute_ult(state: &mut SimState, idx: usize) {
     characters::dispatch_on_after_action(state, idx, &action, target_idx);
     lightcones::dispatch_on_after_action(state, idx, &action, target_idx);
 
+    // on_ally_action for other team members (enables WF triggers on ult hits)
+    characters::dispatch_on_ally_action(state, idx, &action, target_idx);
+
     // on_global_debuff for the ult
     if action.inflicts_debuff {
         if let Some(t_idx) = target_idx {
@@ -840,7 +843,13 @@ fn advance_wave(state: &mut SimState) {
 pub fn effective_spd(member: &TeamMember) -> f64 {
     let base = member.base_stats.get(ids::CHAR_SPD_ID).copied().unwrap_or(100.0);
     // buffs.speed_percent already includes persistent Messenger SPD (applied directly there).
-    base * (1.0 + member.buffs.speed_percent / 100.0)
+    let spd = base * (1.0 + member.buffs.speed_percent / 100.0);
+    // One-shot advance (e.g. Bronya Talent: 30% forward = SPD / (1 - 0.30)).
+    // Set "_action_advance_pct" in on_after_action; cleared in on_turn_start.
+    if let Some(&adv) = member.stacks.get("_action_advance_pct") {
+        if adv > 0.0 && adv < 100.0 { return spd / (1.0 - adv / 100.0); }
+    }
+    spd
 }
 
 pub fn run_simulation(
@@ -1011,6 +1020,60 @@ pub fn run_simulation(
                         let gm_spd = state.stacks.get("garmentmaker_spd").copied().unwrap_or(100.0);
                         state.av_queue.push(ActorEntry {
                             next_av:     entry.next_av + 10000.0 / gm_spd,
+                            actor_id:    entry.actor_id,
+                            instance_id: entry.instance_id,
+                            is_enemy:    false,
+                        });
+                    }
+                }
+            }
+        } else if entry.actor_id == ids::NETHERWING_ID {
+            // ── Castorice Netherwing memosprite turn ──────────────────────────
+            let current_gen = state.stacks.get("netherwing_gen").copied().unwrap_or(0.0);
+            if entry.instance_id != current_gen.to_string() {
+                continue; // stale entry from a previous summon
+            }
+
+            let castorice_idx = state.team.iter().position(|m| m.kit_id == ids::CASTORICE_ID);
+            if let Some(c_idx) = castorice_idx {
+                let alive_and_present = !state.team[c_idx].is_downed
+                    && characters::castorice::is_nw_alive(&state);
+                if alive_and_present {
+                    characters::castorice::netherwing_turn(&mut state, c_idx);
+
+                    // Re-schedule only if Netherwing survived.
+                    if characters::castorice::is_nw_alive(&state) {
+                        let nw_spd = state.stacks.get("netherwing_spd").copied().unwrap_or(165.0);
+                        state.av_queue.push(ActorEntry {
+                            next_av:     entry.next_av + 10000.0 / nw_spd,
+                            actor_id:    entry.actor_id,
+                            instance_id: entry.instance_id,
+                            is_enemy:    false,
+                        });
+                    }
+                }
+            }
+        } else if entry.actor_id == ids::SOULDRAGON_ID {
+            // ── Dan Heng • Permansor Terrae — Souldragon turn ─────────────────
+            let current_gen = state.stacks.get("dhpt_sd_gen").copied().unwrap_or(0.0);
+            if entry.instance_id != current_gen.to_string() {
+                continue; // stale entry from a previous summon generation
+            }
+            let dhpt_idx = state.team.iter().position(|m| m.kit_id == ids::DAN_HENG_PT_ID);
+            if let Some(p_idx) = dhpt_idx {
+                if !state.team[p_idx].is_downed
+                    && characters::dan_heng_pt::is_sd_alive(&state)
+                {
+                    characters::dan_heng_pt::souldragon_turn(&mut state, p_idx);
+
+                    if characters::dan_heng_pt::is_sd_alive(&state) {
+                        // A4: accumulate pending AV reduction, then clear
+                        let av_reduce  = state.stacks.remove("dhpt_sd_av_reduce").unwrap_or(0.0);
+                        let base_interval = 10000.0 / 165.0;
+                        let next_av = (entry.next_av + base_interval - av_reduce)
+                            .max(entry.next_av + 1.0);
+                        state.av_queue.push(ActorEntry {
+                            next_av,
                             actor_id:    entry.actor_id,
                             instance_id: entry.instance_id,
                             is_enemy:    false,

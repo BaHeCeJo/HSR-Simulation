@@ -71,6 +71,15 @@ fn scaling_stat_percent(attacker: &TeamMember, scaling_stat_id: &str) -> f64 {
     }
 }
 
+/// Flat bonus added after percent scaling — only applies to ATK-scaling.
+fn scaling_stat_flat(attacker: &TeamMember, scaling_stat_id: &str) -> f64 {
+    if scaling_stat_id != ids::CHAR_DEF_ID && scaling_stat_id != ids::CHAR_HP_ID {
+        attacker.buffs.atk_flat
+    } else {
+        0.0
+    }
+}
+
 /// Additional DMG% that applies only to specific action types.
 fn action_type_dmg_boost(attacker: &TeamMember, action: &ActionParams) -> f64 {
     match action.action_type {
@@ -106,7 +115,8 @@ pub fn calculate_damage_detailed(
     let char_base  = attacker.base_stats.get(&action.scaling_stat_id).copied().unwrap_or(1000.0);
     let lc_base    = attacker.lightcone.base_stats.get(&action.scaling_stat_id).copied().unwrap_or(0.0);
     let pct_bonus  = scaling_stat_percent(attacker, &action.scaling_stat_id);
-    let total_stat = (char_base + lc_base) * (1.0 + pct_bonus / 100.0);
+    let flat_bonus = scaling_stat_flat(attacker, &action.scaling_stat_id);
+    let total_stat = (char_base + lc_base) * (1.0 + pct_bonus / 100.0) + flat_bonus;
     let base_dmg   = (action.multiplier + action.extra_multiplier / 100.0) * total_stat + action.extra_dmg;
     let dmg_boost  = 1.0 + (attacker.buffs.dmg_boost + action_type_dmg_boost(attacker, action)) / 100.0;
     let weaken_m   = 1.0 - attacker.buffs.weaken / 100.0;
@@ -142,7 +152,8 @@ pub fn calculate_damage(attacker: &TeamMember, target: &SimEnemy, action: &Actio
     let char_base  = attacker.base_stats.get(&action.scaling_stat_id).copied().unwrap_or(1000.0);
     let lc_base    = attacker.lightcone.base_stats.get(&action.scaling_stat_id).copied().unwrap_or(0.0);
     let pct_bonus  = scaling_stat_percent(attacker, &action.scaling_stat_id);
-    let total_stat = (char_base + lc_base) * (1.0 + pct_bonus / 100.0);
+    let flat_bonus = scaling_stat_flat(attacker, &action.scaling_stat_id);
+    let total_stat = (char_base + lc_base) * (1.0 + pct_bonus / 100.0) + flat_bonus;
 
     // 2. BaseDMG = (multiplier + extra_mult%) × stat + extra_dmg
     let base_dmg = (action.multiplier + action.extra_multiplier / 100.0) * total_stat + action.extra_dmg;
@@ -221,6 +232,33 @@ pub fn calculate_break_damage(attacker: &TeamMember, target: &SimEnemy) -> f64 {
     let broken_mult = 0.9; // enemy was not yet broken when toughness hits 0
 
     (base_dmg * (1.0 + be) * d_mult * r_mult * vuln_mult * mitig_mult * broken_mult).floor()
+}
+
+/// Super Break DMG (A4 Module β: Autoreactive Armor for Firefly).
+///
+/// SuperBreak = (toughness_dealt / 10) × 3 × LevelMult × (1 + BE%) × super_mult
+///              × DEFMult × RESMult × VulnMult × MitigMult
+/// `super_mult` = 1.0 for 100% Super Break, 1.5 for 150%.
+pub fn calculate_super_break_damage(
+    attacker: &TeamMember,
+    target: &SimEnemy,
+    toughness_dealt: f64,
+    super_mult: f64,
+) -> f64 {
+    let lv_mult  = level_mult(attacker.level);
+    let base_dmg = (toughness_dealt / 10.0) * 3.0 * lv_mult;
+    let be = (attacker.base_stats.get(ids::CHAR_BE_ID).copied().unwrap_or(0.0)
+             + attacker.buffs.break_effect) / 100.0;
+    let d_mult = def_mult(
+        attacker.level, target.level,
+        attacker.buffs.def_ignore / 100.0,
+        attacker.buffs.def_reduction / 100.0,
+    );
+    let base_res = target.elemental_res.get(&attacker.element).copied().unwrap_or(target.resistance);
+    let r_mult   = res_mult(base_res - target.cached_all_res_reduce, attacker.buffs.res_pen / 100.0);
+    let vuln_m   = 1.0 + (target.vulnerability + target.cached_vuln_bonus) / 100.0;
+    let mitig_m  = 1.0 - target.dmg_reduction / 100.0;
+    (base_dmg * super_mult * (1.0 + be) * d_mult * r_mult * vuln_m * mitig_m).floor()
 }
 
 /// Toughness reduction for an ability hit.

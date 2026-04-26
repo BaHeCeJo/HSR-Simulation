@@ -170,6 +170,7 @@ pub struct IncomingRelic {
 pub struct Buffs {
     // ── Scaling stat percentage bonuses (applied inside damage formula) ──────
     pub atk_percent: f64,          // ATK%   (fleet buff, LC passives, etc.)
+    pub atk_flat: f64,             // flat ATK added after percent scaling (support talent buffs)
     pub def_percent: f64,          // DEF%   (Aventurine traces, relic DEF%)
     pub hp_percent: f64,           // HP%    (relic HP%, fleet 2-piece)
     pub speed_percent: f64,        // SPD%   (Musketeer 4-piece)
@@ -207,6 +208,7 @@ impl Default for Buffs {
     fn default() -> Self {
         Buffs {
             atk_percent:         0.0,
+            atk_flat:            0.0,
             def_percent:         0.0,
             hp_percent:          0.0,
             speed_percent:       0.0,

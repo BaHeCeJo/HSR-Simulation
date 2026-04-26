@@ -36,6 +36,7 @@ pub const ELEM_IMAGINARY_ID: &str = "176151ff-8d54-4b1b-98fb-03ef410d7371";
 
 // ─── Character kit IDs ───────────────────────────────────────────────────────
 pub const ACHERON_ID:     &str = "f06222e4-d23d-4ac2-86ff-3a6cc389b812";
+pub const BLACK_SWAN_ID:  &str = "a0b1c2d3-e4f5-6789-a0b1-c2d3e4f56789";
 pub const JIAOQIU_ID:     &str = "f06222e4-d23d-4ac2-86ff-3a6cc389b813";
 pub const PELA_ID:        &str = "a8a4d435-bcd4-4105-83ab-72650f296844";
 pub const SILVER_WOLF_ID: &str = "2f2432f3-4736-4210-870a-c48d0c6bc3ee";
@@ -51,6 +52,23 @@ pub const AVENTURINE_ID:  &str = "c2d3e4f5-a6b7-4890-c1d2-e3f4a5b6c7d8";
 pub const BAILU_ID:       &str = "d3e4f5a6-b7c8-4901-d2e3-f4a5b6c7d8e9";
 pub const BLADE_ID:       &str = "e4f5a6b7-c8d9-4e0f-a1b2-c3d4e5f6a7b8";
 pub const BOOTHILL_ID:    &str = "f5a6b7c8-d9e0-4f1a-b2c3-d4e5f6a7b8c9";
+pub const BRONYA_ID:      &str = "a1b2c3d4-e5f6-7890-abcd-ef1234567890";
+pub const CASTORICE_ID:   &str = "b2c3d4e5-f6a7-8901-bcde-f23456789012";
+pub const CERYDRA_ID:     &str = "d4e5f6a7-b8c9-0123-def0-456789012345";
+pub const CLARA_ID:       &str = "a6b7c8d9-e0f1-2345-a6b7-c8d9e0f12345";
+pub const DAN_HENG_ID:    &str = "9f8e7d6c-5b4a-3928-9f8e-7d6c5b4a3928";
+pub const DAN_HENG_IL_ID: &str = "d1e2f3a4-b5c6-7890-d1e2-f3a4b5c67890";
+pub const DAN_HENG_PT_ID: &str = "e3f4a5b6-c7d8-9012-e3f4-a5b6c7d89012";
+pub const DR_RATIO_ID:    &str = "a7b8c9d0-e1f2-3456-a7b8-c9d0e1f23456";
+pub const FEIXIAO_ID:     &str = "b8c9d0e1-f2a3-4567-b8c9-d0e1f2a34567";
+pub const FIREFLY_ID:     &str = "c6d7e8f9-a0b1-2345-c6d7-e8f9a0b12345";
+pub const FU_XUAN_ID:     &str = "d7e8f9a0-b1c2-3456-d7e8-f9a0b1c23456";
+pub const GALLAGHER_ID:   &str = "e8f9a0b1-c2d3-4567-e8f9-a0b1c2d34567";
+pub const GEPARD_ID:      &str = "f0a1b2c3-d4e5-6789-f0a1-b2c3d4e56789";
+pub const GUINAIFEN_ID:   &str = "a1b2c3d4-e5f6-7890-a1b2-c3d4e5f67890";
+pub const SOULDRAGON_ID:  &str = "f4a5b6c7-d8e9-0123-f4a5-b6c7d8e90123";
+pub const CIPHER_ID:      &str = "e5f6a7b8-c9d0-1234-ef01-567890123456";
+pub const NETHERWING_ID:  &str = "c3d4e5f6-a7b8-9012-cdef-345678901234";
 
 // ─── Lightcone passive IDs ───────────────────────────────────────────────────
 pub const LC_DREAM_SCENTED_WHEAT_ID:    &str = "df8260b3-e438-4f9e-b942-2e746bb256f4";
